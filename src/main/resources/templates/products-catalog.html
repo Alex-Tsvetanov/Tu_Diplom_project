@@ -274,9 +274,8 @@
     height: 100vh;">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">Shop</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="/" th:text="#{nav.brand}">Shop</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -284,38 +283,37 @@
         <ul class="navbar-nav mr-auto">
 
             <li th:unless="${email != null}" class="nav-item">
-                <a class="nav-link" href="/users/register">Register</a>
+                <a class="nav-link" href="/users/register" th:text="#{nav.register}">Register</a>
             </li>
             <li th:unless="${email != null}" class="nav-item">
-                <a class="nav-link" href="/users/login">Login</a>
+                <a class="nav-link" href="/users/login" th:text="#{nav.login}">Login</a>
             </li>
             <li th:if="${email != null}" class="nav-item">
-                <a class="nav-link" href="/users/all">Companies</a>
+                <a class="nav-link" href="/users/all" th:text="#{nav.companies}">Companies</a>
             </li>
             <li th:if="${email != null}" class="nav-item">
-                <a class="nav-link" href="/users/profile">Profile</a>
+                <a class="nav-link" href="/users/profile" th:text="#{nav.profile}">Profile</a>
             </li>
             <li th:if="${email != null}" class="nav-item">
-                <a class="nav-link" th:href="@{/products/catalog/{category}(category = 'all')}">Catalog</a>
+                <a class="nav-link" th:href="@{/products/catalog/{category}(category = 'all')}" th:text="#{nav.catalog}">Catalog</a>
             </li>
             <li th:if="${email != null}" class="nav-item">
-                <a class="nav-link" href="/products/add-product">Add Product</a>
+                <a class="nav-link" href="/products/add-product" th:text="#{nav.add.product}">Add Product</a>
             </li>
             <li th:if="${email != null}" class="nav-item">
-                <a class="nav-link" href="/products/my-history">My History</a>
+                <a class="nav-link" href="/products/my-history" th:text="#{nav.my.history}">My History</a>
             </li>
-            <li th:if="${email != null}" class="nav-item" style="right: 5%;
-                position: absolute;">
-                <a class="nav-link " href="/products/shopping-cart">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                         class="bi bi-cart " viewBox="0 0 16 16">
-                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                    </svg>
-                    Shopping Cart</a>
+            <li th:if="${email != null}" class="nav-item" style="right: 15%; position: absolute;">
+                <a class="nav-link " href="/products/shopping-cart"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart " viewBox="0 0 16 16"><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg><span th:text="#{nav.shopping.cart}">Shopping Cart</span></a>
             </li>
-            <li th:if="${email != null}" class="nav-item" style="right: 1%;
-                position: absolute;">
-                <a class="nav-link " href="/users/logout">Logout</a>
+            <li th:if="${email != null}" class="nav-item" style="right: 8%; position: absolute;">
+                <a class="nav-link " href="/users/logout" th:text="#{nav.logout}">Logout</a>
+            </li>
+            <li class="nav-item" style="right: 4%; position: absolute;">
+                <a class="nav-link" href="?lang=en">EN</a>
+            </li>
+            <li class="nav-item" style="right: 1%; position: absolute;">
+                <a class="nav-link" href="?lang=bg">BG</a>
             </li>
         </ul>
 
@@ -327,25 +325,25 @@
         <div class="mini-menu">
             <ul>
                 <li class="sub">
-                    <a href="#">CATEGORIES</a>
+                    <a href="#" th:text="#{catalog.category}">CATEGORIES</a>
                     <ul>
-                        <li><a th:href="@{/products/catalog/{category}(category = 'all')}">ALL</a></li>
-                        <li><a th:href="@{/products/catalog/{category}(category = 'videocards')}">VIDEOCARDS</a></li>
-                        <li><a th:href="@{/products/catalog/{category}(category = 'processors')}">PROCESSORS</a></li>
-                        <li><a th:href="@{/products/catalog/{category}(category = 'headphones')}">HEADPHONES</a></li>
-                        <li><a th:href="@{/products/catalog/{category}(category = 'printers')}">PRINTERS</a></li>
-                        <li><a th:href="@{/products/catalog/{category}(category = 'office_chairs')}">OFFICE_CHAIRS</a>
+                        <li><a th:href="@{/products/catalog/{category}(category = 'all')}" th:text="#{catalog.category.all}">ALL</a></li>
+                        <li><a th:href="@{/products/catalog/{category}(category = 'videocards')}" th:text="#{catalog.category.videocards}">VIDEOCARDS</a></li>
+                        <li><a th:href="@{/products/catalog/{category}(category = 'processors')}" th:text="#{catalog.category.processors}">PROCESSORS</a></li>
+                        <li><a th:href="@{/products/catalog/{category}(category = 'headphones')}" th:text="#{catalog.category.headphones}">HEADPHONES</a></li>
+                        <li><a th:href="@{/products/catalog/{category}(category = 'printers')}" th:text="#{catalog.category.printers}">PRINTERS</a></li>
+                        <li><a th:href="@{/products/catalog/{category}(category = 'office_chairs')}" th:text="#{catalog.category.office.chairs}">OFFICE_CHAIRS</a>
                         </li>
-                        <li><a th:href="@{/products/catalog/{category}(category = 'scanners')}">SCANNERS</a></li>
-                        <li><a th:href="@{/products/catalog/{category}(category = 'routers')}">ROUTERS</a></li>
-                        <li><a th:href="@{/products/catalog/{category}(category = 'mice')}">MICE</a></li>
-                        <li><a th:href="@{/products/catalog/{category}(category = 'keyboards')}">KEYBOARDS</a></li>
+                        <li><a th:href="@{/products/catalog/{category}(category = 'scanners')}" th:text="#{catalog.category.scanners}">SCANNERS</a></li>
+                        <li><a th:href="@{/products/catalog/{category}(category = 'routers')}" th:text="#{catalog.category.routers}">ROUTERS</a></li>
+                        <li><a th:href="@{/products/catalog/{category}(category = 'mice')}" th:text="#{catalog.category.mice}">MICE</a></li>
+                        <li><a th:href="@{/products/catalog/{category}(category = 'keyboards')}" th:text="#{catalog.category.keyboards}">KEYBOARDS</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
         <div class="menu-price menu-item">
-            <div class="header-item">Price</div>
+            <div class="header-item" th:text="#{catalog.price}">Price</div>
             <p>
                 <input type="text" readonly id="amount" style="border:0; color:#f6931f; font-weight:bold;">
             </p>
@@ -364,7 +362,7 @@
                     <p th:text="${product.category.name()}" class="descroption"></p>
                     <h5 th:text="${'$' + product.price}"></h5>
                     <a th:href="@{/products/{id}/details(id = ${product.id})}"
-                       class="btn justify-content-center btn-primary btn-rounded" style="margin-left:30%">More</a>
+                       class="btn justify-content-center btn-primary btn-rounded" style="margin-left:30%" th:text="#{catalog.product.details}">More</a>
                 </div>
             </div>
         </div>
