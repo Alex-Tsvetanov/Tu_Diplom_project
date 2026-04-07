@@ -1,0 +1,246 @@
+\documentclass[12pt]{article}
+
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian,english]{babel}
+\usepackage{tempora}
+\usepackage[top=2.5cm, bottom=2.5cm, left=3.0cm, right=2.0cm, a4paper]{geometry}
+\usepackage{setspace}
+\setstretch{1.5}
+\usepackage[none]{hyphenat}
+\usepackage[expansion=false]{microtype}
+\emergencystretch=1.5em
+\sloppy
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0pt}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[R]{\thepage}
+\usepackage[hang,flushmargin]{footmisc}
+\usepackage{ragged2e}
+\renewcommand{\footnotelayout}{\fontsize{10}{12}\selectfont\setstretch{1.0}\justifying}
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+\titleformat{\section}[block]
+  {\fontsize{14}{16.8}\bfseries\centering}
+  {\thesection. }
+  {0pt}
+  {\MakeUppercase}
+\titleformat{\subsection}[block]
+  {\fontsize{14}{16.8}\bfseries}
+  {\thesubsection. }
+  {0pt}
+  {}
+\titlespacing*{\subsection}{1.25cm}{*3}{*2}
+\titleformat{\subsubsection}[block]
+  {\fontsize{13}{15.6}\bfseries}
+  {\thesubsubsection. }
+  {0pt}
+  {}
+\titlespacing*{\subsubsection}{2.0cm}{*2}{*1}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\l@section}{#1}{\MakeUppercase{#1}}{}{}
+\makeatother
+\usepackage[titles]{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsubsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecfont}{\fontsize{12}{14}\bfseries}
+\renewcommand{\cftsecpagefont}{\fontsize{12}{14}\bfseries}
+\renewcommand{\cftsecaftersnum}{.\enspace}
+\settowidth{\cftsecnumwidth}{VIII.\enspace}
+\renewcommand{\cftsubsecaftersnum}{.}
+\renewcommand{\cftsubsubsecaftersnum}{.}
+\settowidth{\cftsubsecnumwidth}{13.10.\enspace}
+\settowidth{\cftsubsubsecnumwidth}{13.10.10.\enspace}
+\usepackage{caption}
+\usepackage{subcaption}
+\DeclareCaptionLabelFormat{tablelabel}{Таблица #2}
+\captionsetup[table]{
+    labelformat=tablelabel,
+    labelsep=period,
+    font={bf,small},
+    justification=centering,
+    singlelinecheck=true
+}
+\DeclareCaptionLabelFormat{figurelabel}{Фигура #2}
+\captionsetup[figure]{
+    labelformat=figurelabel,
+    labelsep=period,
+    font={bf,small},
+    justification=centering,
+    singlelinecheck=true
+}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing,arrows.meta,positioning,shapes.geometric,fit,calc}
+\usepackage{adjustbox}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage{enumitem}
+\usepackage{textcomp}
+\usepackage{fancyvrb}
+\usepackage{siunitx}
+\usepackage{listings}
+\usepackage{seqsplit}
+\captionsetup{font=small,labelfont=bf}
+\urlstyle{same}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=blue
+}
+\newcolumntype{L}[1]{>{\RaggedRight\hspace{0pt}\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\RaggedRight\hspace{0pt}\arraybackslash}X}
+\DeclareRobustCommand{\code}[1]{{\ttfamily\seqsplit{#1}}}
+\renewcommand{\texttt}[1]{\code{#1}}
+\setlength{\extrarowheight}{0.45em}
+\tikzset{
+    appblock/.style={draw, rounded corners, fill=blue!5, align=center, font=\small,
+        minimum width=3.2cm, minimum height=1.05cm, inner sep=6pt},
+    appaccent/.style={draw, rounded corners, fill=green!8, align=center, font=\small,
+        minimum width=3.0cm, minimum height=0.95cm, inner sep=6pt},
+    appnote/.style={draw, dashed, rounded corners, fill=gray!8, align=left, font=\small,
+        inner sep=6pt},
+    appline/.style={-Latex, thick}
+}
+\AtBeginEnvironment{tikzpicture}{\setstretch{1.1}}
+\AtBeginEnvironment{lstlisting}{\setstretch{1.1}}
+\AtBeginEnvironment{verbatim}{\setstretch{1.1}}
+\AtBeginEnvironment{tabular}{\setstretch{1.1}}
+\AtBeginEnvironment{longtable}{\setstretch{1.1}}
+\BeforeBeginEnvironment{tikzpicture}{\begin{adjustbox}{max width=\textwidth}}
+\AfterEndEnvironment{tikzpicture}{\end{adjustbox}}
+\definecolor{javablue}{RGB}{0,0,180}
+\definecolor{javagreen}{RGB}{0,128,0}
+\definecolor{javared}{RGB}{180,0,0}
+\definecolor{javagray}{RGB}{128,128,128}
+\usepackage[T2A]{fontenc}
+\lstset{
+    language=Java,
+    basicstyle=\footnotesize\ttfamily,
+    breaklines=true,
+    breakatwhitespace=false,
+    breakautoindent=false,
+    breakindent=0pt,
+    columns=fullflexible,
+    keepspaces=true,
+    postbreak=\mbox{\textcolor{javagray}{\ensuremath{\hookrightarrow}}\space},
+    xleftmargin=1.5em,
+    xrightmargin=0.5em,
+    keywordstyle=\color{javablue}\bfseries,
+    stringstyle=\color{javared},
+    commentstyle=\color{javagreen},
+    identifierstyle=\color{black},
+    showstringspaces=false,
+    numbers=left,
+    numberstyle=\tiny\color{javagray},
+    numbersep=8pt,
+    aboveskip=1.5em,
+    belowskip=1.5em,
+    frame=single,
+    framerule=0.5pt,
+    rulecolor=\color{javagray},
+    tabsize=4,
+    captionpos=b
+}
+\newcommand{\ProjectTitle}{Проектиране и разработване на уеб базирана система за електронна търговия с компютърна и офис техника}
+\newcommand{\screenshotplaceholder}[2]{
+\begin{figure}[H]
+    \centering
+    \fbox{%
+        \begin{minipage}[c][7cm][c]{0.88\textwidth}
+            \centering
+            {\bfseries Placeholder за screenshot}\\[0.8em]
+            #1\\[0.5em]
+            \small #2
+        \end{minipage}%
+    }
+    \caption{#1}
+\end{figure}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+    {\fontsize{18}{21.6}\selectfont\bfseries ТЕХНИЧЕСКИ УНИВЕРСИТЕТ \textendash{} СОФИЯ\par}
+    \vspace{0.5cm}
+    {\fontsize{16}{19.2}\selectfont\bfseries ФАКУЛТЕТ „КОМПЮТЪРНИ СИСТЕМИ И ТЕХНОЛОГИИ“\par}
+
+    \vspace{0.5cm}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.4\linewidth]{images/ту.png}
+    \end{figure}
+    \vspace{0.5cm}
+
+    {\fontsize{20}{24}\selectfont\bfseries \ProjectTitle\par}
+
+    \vspace{1cm}
+
+    {\fontsize{14}{16.8}\selectfont\bfseries ДИПЛОМНА РАБОТА\par}
+
+    \vfill
+
+    \begin{flushleft}
+    {\fontsize{14}{16.8}\selectfont\bfseries Изготвил:\par}
+    Кирил Вълков, фак. № 121222194\par
+    Специалност: Компютърно и софтуерно инженерство\par
+
+    \vspace{1cm}
+
+    {\fontsize{14}{16.8}\selectfont\bfseries Научен ръководител:\par}
+    ас. маг. инж. Деян Дънешки\par
+    \end{flushleft}
+
+    \vfill
+
+    {\fontsize{12}{14.4}\selectfont София, 2026\par}
+\end{center}
+\end{titlepage}
+
+\newpage
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+
+\pagenumbering{arabic}
+
+\input{chapters/00_abstract.tex}
+\input{chapters/01_introduction.tex}
+\input{chapters/02_existing_solutions.tex}
+\input{chapters/03_theoretical_background.tex}
+\input{chapters/04_requirements_analysis.tex}
+\input{chapters/05_system_architecture.tex}
+\input{chapters/06_domain_and_data_model.tex}
+\input{chapters/07_backend_implementation.tex}
+\input{chapters/08_presentation_layer_and_user_experience.tex}
+\input{chapters/09_build_configuration_and_operation.tex}
+\input{chapters/10_user_scenarios_and_screenshots.tex}
+\input{chapters/11_verification_and_evaluation.tex}
+\input{chapters/12_future_work.tex}
+\input{chapters/13_conclusion.tex}
+
+\bibliographystyle{ieeetr}
+\bibliography{references}
+
+\end{document}
