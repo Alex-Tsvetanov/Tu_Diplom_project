@@ -25,7 +25,7 @@
 \renewcommand{\footnotelayout}{\fontsize{10}{12}\selectfont\setstretch{1.0}\justifying}
 \usepackage{titlesec}
 \newcommand{\sectionbreak}{\clearpage}
-\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesection}{\arabic{section}}
 \renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
 \renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
 \titleformat{\section}[block]
@@ -56,7 +56,7 @@
 \renewcommand{\cftsecfont}{\fontsize{12}{14}\bfseries}
 \renewcommand{\cftsecpagefont}{\fontsize{12}{14}\bfseries}
 \renewcommand{\cftsecaftersnum}{.\enspace}
-\settowidth{\cftsecnumwidth}{VIII.\enspace}
+\settowidth{\cftsecnumwidth}{4.\enspace}
 \renewcommand{\cftsubsecaftersnum}{.}
 \renewcommand{\cftsubsubsecaftersnum}{.}
 \settowidth{\cftsubsecnumwidth}{13.10.\enspace}
@@ -162,6 +162,22 @@
     tabsize=4,
     captionpos=b
 }
+\addto\captionsbulgarian{%
+    \renewcommand{\contentsname}{Съдържание}%
+    \renewcommand{\refname}{Използвана литература}%
+}
+\addto\captionsenglish{%
+    \renewcommand{\contentsname}{Съдържание}%
+    \renewcommand{\refname}{Използвана литература}%
+}
+\newcommand{\subsectionnonum}[1]{%
+    \subsection*{#1}%
+    \addcontentsline{toc}{subsection}{#1}%
+}
+\newcommand{\subsubsectionnonum}[1]{%
+    \subsubsection*{#1}%
+    \addcontentsline{toc}{subsubsection}{#1}%
+}
 \newcommand{\ProjectTitle}{Проектиране и разработване на уеб базирана система за електронна търговия с компютърна и офис техника}
 \newcommand{\screenshotplaceholder}[2]{
 \begin{figure}[H]
@@ -225,21 +241,24 @@
 
 \pagenumbering{arabic}
 
-\input{chapters/00_abstract.tex}
-\input{chapters/01_introduction.tex}
-\input{chapters/02_existing_solutions.tex}
-\input{chapters/03_theoretical_background.tex}
-\input{chapters/04_requirements_analysis.tex}
-\input{chapters/05_system_architecture.tex}
-\input{chapters/06_domain_and_data_model.tex}
-\input{chapters/07_backend_implementation.tex}
-\input{chapters/08_presentation_layer_and_user_experience.tex}
-\input{chapters/09_build_configuration_and_operation.tex}
-\input{chapters/10_user_scenarios_and_screenshots.tex}
-\input{chapters/11_verification_and_evaluation.tex}
-\input{chapters/12_future_work.tex}
-\input{chapters/13_conclusion.tex}
+\clearpage
+\section*{Увод}
+\addcontentsline{toc}{section}{Увод}
+\input{chapters/00_introduction.tex}
 
+\input{chapters/01_platforms.tex}
+\input{chapters/02_design.tex}
+\input{chapters/03_implementation.tex}
+\input{chapters/04_user_guide.tex}
+
+\clearpage
+\section*{Заключение}
+\addcontentsline{toc}{section}{Заключение}
+\input{chapters/05_conclusion.tex}
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{section}{Използвана литература}
 \bibliographystyle{ieeetr}
 \bibliography{references}
 
