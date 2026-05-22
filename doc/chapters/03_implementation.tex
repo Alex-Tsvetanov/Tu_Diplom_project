@@ -10,7 +10,7 @@
 
 Back-end поведението зависи от няколко централизирано дефинирани компонента, най-важни от които са \texttt{ModelMapper} и \texttt{PasswordEncoder}.
 
-\begin{lstlisting}[caption={Конфигурация на mapper и password encoder},label={lst:bean-config}]
+\begin{lstlisting}[caption={Конфигурация на mapper и password encoder},label={lst:bean-config},float=H]
 @Configuration
 public class ApplicationBeanConfiguration {
     @Bean
@@ -28,7 +28,7 @@ public class ApplicationBeanConfiguration {
 
 Потребителският модул е най-обемен от гледна точка на уеб потоци и обхваща регистрация, потвърждение, вход, изход и профил. Регистрационният процес започва в \texttt{UserController}, където POST маршрутът приема \texttt{UserRegisterBindingModel} и при валидни данни делегира към \texttt{UserServiceImpl}.
 
-\begin{lstlisting}[caption={Опростен вид на регистрационната логика},label={lst:user-register}]
+\begin{lstlisting}[caption={Опростен вид на регистрационната логика},label={lst:user-register},float=H]
 @Override
 public Optional<UserRegisterBindingModel> register(
         UserRegisterBindingModel input) {
@@ -69,7 +69,7 @@ public Optional<UserRegisterBindingModel> register(
 
 Модулът за количка и checkout координира работа с потребител, количка и история. При отваряне на количката контролерът добавя списък с записи, брой продукти, обща цена и крайна цена с доставка; методът \texttt{findAllShoppingCartEntities()} връща всички записи без филтриране по потребител, което в многопотребителска среда не би било строго изолирано. Checkout процесът е реализиран в \texttt{HistoryServiceImpl} и е маркиран като \texttt{@Transactional}, тъй като променя множество състояния едновременно.
 
-\begin{lstlisting}[caption={Същност на checkout операцията},label={lst:checkout-service}]
+\begin{lstlisting}[caption={Същност на checkout операцията},label={lst:checkout-service},float=H]
 @Override
 @Transactional
 public void secureCheckout(String address, Object email,
@@ -129,7 +129,7 @@ public void secureCheckout(String address, Object email,
 
 Thymeleaf \cite{thymeleaf} играе централна роля: атрибути като \texttt{th:text}, \texttt{th:field}, \texttt{th:each}, \texttt{th:if}, \texttt{th:href} и \texttt{th:action} свързват директно подготвените от контролерите данни с HTML. Особено полезно е \texttt{th:field} при формите, което осигурява двупосочно свързване между binding модел и HTML полета и визуализиране на грешки чрез \texttt{\#fields.hasErrors(...)}.
 
-\begin{lstlisting}[caption={Типичен Thymeleaf фрагмент за форма},label={lst:thymeleaf-form}]
+\begin{lstlisting}[caption={Типичен Thymeleaf фрагмент за форма},label={lst:thymeleaf-form},float=H]
 <form th:action="@{/products/add-product}"
       th:object="${productAddBindingModel}"
       th:method="POST">

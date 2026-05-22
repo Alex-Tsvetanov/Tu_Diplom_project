@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(latexmk -pdf -interaction=nonstopmode -halt-on-error Main.tex)",
-      "Bash(pdflatex -interaction=nonstopmode -halt-on-error Main.tex)"
+      "Bash(pdflatex -interaction=nonstopmode -halt-on-error Main.tex)",
+      "Bash(git fetch *)",
+      "Bash(pdflatex -interaction=nonstopmode Main.tex)"
     ]
   }
 }
